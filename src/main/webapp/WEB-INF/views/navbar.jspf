@@ -67,8 +67,8 @@
 			<form class="modal-content animate" action="login" method=POST>
 				<div class="imgcontainer">
 					<img src="#"
-						alt="          請輸入你的帳號密碼  新訪客請按新會員                          "
-						width="20%">
+						alt="          請輸入你的帳號密碼        新訪客請按新會員                          "
+						width="40%">
 				</div>
 				<div class="container">
 					<b>帳號:</b><input type="text" placeholder="enter account"
