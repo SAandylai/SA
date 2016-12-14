@@ -53,7 +53,9 @@
 				</c:forEach>
 			</table>
 			<p>
-				<a class="btn btn-primary" href="checkout?id=${product.product_id}">結帳</a>
+				<a class="btn btn-primary" href="checkout?id=${product.product_id}">結帳
+
+				</a>
 			</p>
 			<a
 				href="http://www.w3schools.com/html/tryit.asp?filename=tryhtml_links_w3schools">w3school</a>

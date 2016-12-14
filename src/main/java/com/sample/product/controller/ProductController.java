@@ -56,30 +56,29 @@ public class ProductController {
 		model.addObject("shoppingCart", list);
 		return model;
 	}// getProductList
-	
+
 	@RequestMapping(value = "/product", method = RequestMethod.GET)
 	public ModelAndView getProductList() {
-		
+
 		ModelAndView model = new ModelAndView("product");
 		ProductDAO dao = (ProductDAO) context.getBean("productDAO");
 		ProductDAODB daoDB = (ProductDAODB) context.getBean("productDAO");
 		List<Product> list = daoDB.getList();
-		/*Product p1 = dao.get(1);
-		Product p2 = dao.get(2);
-		Product p3 = dao.get(3);
-		model.addObject("product1",p1);
-		model.addObject("product2",p2);
-		model.addObject("product3",p3);
-		List<Product> list = dao.getList();*/
+		/*
+		 * Product p1 = dao.get(1); Product p2 = dao.get(2); Product p3 =
+		 * dao.get(3); model.addObject("product1",p1);
+		 * model.addObject("product2",p2); model.addObject("product3",p3);
+		 * List<Product> list = dao.getList();
+		 */
 		model.addObject("productList", list);
-		String filePath = "C:\\Users\\wsx98\\workspace\\DemoBean\\src\\main\\webapp\\images\\";
-		model.addObject("m", filePath);		
+		String filePath = "C:\\Users\\user\\Desktop\\DemoBeanBook\\src\\main\\webapp\\images\\";
+		model.addObject("m", filePath);
 		return model;
 	}// getProductList
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView index() {
-		
+
 		return getProductList();
 	}// getProductList
 		// list all products
@@ -96,7 +95,7 @@ public class ProductController {
 	@RequestMapping(value = "/productcon", method = RequestMethod.GET)
 	public ModelAndView productconUser() {
 		ModelAndView model = new ModelAndView("productcon");
-		String filePath = "C:\\Users\\wsx98\\workspace\\DemoBean\\src\\main\\webapp\\images\\";
+		String filePath = "C:\\Users\\user\\Desktop\\DemoBeanBook\\src\\main\\webapp\\images\\";
 		model.addObject("m", filePath);
 		ProductDAO dao = (ProductDAO) context.getBean("productDAO");
 		List<Product> list = dao.getList();
@@ -114,13 +113,13 @@ public class ProductController {
 	public ModelAndView insertProduct(@ModelAttribute Product product) {
 		ModelAndView model = new ModelAndView("redirect:/productcon");
 		ProductDAO dao = (ProductDAO) context.getBean("productDAO");
-	
+
 		dao.insert(product);
 		return model;
 	}// insertProduct
 
 	@RequestMapping(value = "/deleteProduct", method = RequestMethod.GET)
-	public ModelAndView deleteProduct(@ModelAttribute Product product,@ModelAttribute ("id")long id) {
+	public ModelAndView deleteProduct(@ModelAttribute Product product, @ModelAttribute("id") long id) {
 		ModelAndView model = new ModelAndView("redirect:/productcon");
 		ProductDAO dao = (ProductDAO) context.getBean("productDAO");
 		dao.delete(id);
@@ -130,7 +129,7 @@ public class ProductController {
 	@RequestMapping(value = "/updateProduct", method = RequestMethod.GET)
 	public ModelAndView updateproductpage(@ModelAttribute("id") int id) {
 		ModelAndView model = new ModelAndView("updateproduct");
-		ProductDAO dao = (ProductDAO) context.getBean("productDAO");				
+		ProductDAO dao = (ProductDAO) context.getBean("productDAO");
 		Product p = dao.get(id);
 		model.addObject("product", p);
 		return model;
@@ -190,15 +189,15 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
-	public ModelAndView uploadFileHandler(@ModelAttribute("file") MultipartFile file,@ModelAttribute("id")int id ) {
+	public ModelAndView uploadFileHandler(@ModelAttribute("file") MultipartFile file, @ModelAttribute("id") int id) {
 		ModelAndView model = new ModelAndView("redirect:/productcon");
 		ProductDAO dao = (ProductDAO) context.getBean("productDAO");
 		// save it as the file name submitted
 		// String name = file.getOriginalFilename();
-		
+
 		Product product = dao.get(id);
 		String name = Long.toString(id);
-		String filePath = "C:\\Users\\wsx98\\workspace\\DemoBean\\src\\main\\webapp\\images\\";
+		String filePath = "C:\\Users\\user\\Desktop\\DemoBeanBook\\src\\main\\webapp\\images\\";
 		//
 		File dir = new File(filePath);
 		if (!dir.exists()) {
@@ -249,102 +248,108 @@ public class ProductController {
 		ProductDAO dao = (ProductDAO) context.getBean("productDAO");
 		product.setProduct_id(dao.count());
 		dao.delete(id);
-		return model;		
+		return model;
 	}
+
 	@RequestMapping(value = "/inf", method = RequestMethod.GET)
-	public ModelAndView inf(@ModelAttribute("id") int a){		
-		ModelAndView model = new ModelAndView("product_info");		
+	public ModelAndView inf(@ModelAttribute("id") int a) {
+		ModelAndView model = new ModelAndView("product_info");
 		ProductDAODB dao = (ProductDAODB) context.getBean("productDAO");
 		Product p = dao.get(a);
-		model.addObject("product",p);
+		model.addObject("product", p);
 		return model;
-		}
+	}
+
 	@RequestMapping(value = "/name", method = RequestMethod.GET)
-	public ModelAndView cat(@ModelAttribute("a") String a,@ModelAttribute("typ") String typ){
-		ModelAndView model = new ModelAndView("product");		
-		ProductDAODB dao = (ProductDAODB) context.getBean("productDAO");			
-		model.addObject("typ",typ);
-		model.addObject("a",a);
+	public ModelAndView cat(@ModelAttribute("a") String a, @ModelAttribute("typ") String typ) {
+		ModelAndView model = new ModelAndView("product");
+		ProductDAODB dao = (ProductDAODB) context.getBean("productDAO");
+		model.addObject("typ", typ);
+		model.addObject("a", a);
 		String filePath = "C:\\Users\\wsx98\\workspace\\DemoBean\\src\\main\\webapp\\images\\";
-		model.addObject("m", filePath);		
+		model.addObject("m", filePath);
 		return model;
-		}
+	}
+
 	@RequestMapping(value = "/per", method = RequestMethod.POST)
-	public ModelAndView per(@ModelAttribute("search") String a){
-		ModelAndView model = new ModelAndView("product");		
+	public ModelAndView per(@ModelAttribute("search") String a) {
+		ModelAndView model = new ModelAndView("product");
 		ProductDAODB dao = (ProductDAODB) context.getBean("productDAO");
 		System.out.println(a);
-		List<Product> search =dao.searchcom(a);
-		model.addObject("productList",search);
-		String filePath = "C:\\Users\\wsx98\\workspace\\DemoBean\\src\\main\\webapp\\images\\";
-		model.addObject("m", filePath);		
+		List<Product> search = dao.searchcom(a);
+		model.addObject("productList", search);
+		String filePath = "C:\\Users\\user\\Desktop\\DemoBeanBook\\src\\main\\webapp\\images\\";
+		model.addObject("m", filePath);
 		return model;
-		}
+	}
+
 	@RequestMapping(value = "/au", method = RequestMethod.POST)
-	public ModelAndView au(@ModelAttribute("searchau") String a){
-		ModelAndView model = new ModelAndView("product");		
+	public ModelAndView au(@ModelAttribute("searchau") String a) {
+		ModelAndView model = new ModelAndView("product");
 		ProductDAODB dao = (ProductDAODB) context.getBean("productDAO");
 		System.out.println(a);
-		List<Product> search =dao.searchau(a);
-		model.addObject("productList",search);
-		String filePath = "C:\\Users\\wsx98\\workspace\\DemoBean\\src\\main\\webapp\\images\\";
-		model.addObject("m", filePath);		
+		List<Product> search = dao.searchau(a);
+		model.addObject("productList", search);
+		String filePath = "C:\\Users\\user\\Desktop\\DemoBeanBook\\src\\main\\webapp\\images\\";
+		model.addObject("m", filePath);
 		return model;
-		}
-	
-		@RequestMapping(value = "/comp", method = RequestMethod.POST)
-	public ModelAndView comp(@ModelAttribute("searchcomp") String typ){
-		ModelAndView model = new ModelAndView("product");		
+	}
+
+	@RequestMapping(value = "/comp", method = RequestMethod.POST)
+	public ModelAndView comp(@ModelAttribute("searchcomp") String typ) {
+		ModelAndView model = new ModelAndView("product");
 		ProductDAODB dao = (ProductDAODB) context.getBean("productDAO");
 		System.out.println(typ);
-		List<Product> search =dao.searchcomp(typ);
-		model.addObject("productList",search);
-		String filePath = "C:\\Users\\wsx98\\workspace\\DemoBean\\src\\main\\webapp\\images\\";
-		model.addObject("m", filePath);		
+		List<Product> search = dao.searchcomp(typ);
+		model.addObject("productList", search);
+		String filePath = "C:\\Users\\user\\Desktop\\DemoBeanBook\\src\\main\\webapp\\images\\";
+		model.addObject("m", filePath);
 		return model;
-		}
-		
-		@RequestMapping(value = "/comp", method = RequestMethod.GET)
-	public ModelAndView comp2(@ModelAttribute("searchcomp") String typ){
-		ModelAndView model = new ModelAndView("product");		
+	}
+
+	@RequestMapping(value = "/comp", method = RequestMethod.GET)
+	public ModelAndView comp2(@ModelAttribute("searchcomp") String typ) {
+		ModelAndView model = new ModelAndView("product");
 		ProductDAODB dao = (ProductDAODB) context.getBean("productDAO");
 		System.out.println(typ);
-		List<Product> search =dao.searchcomp(typ);
-		model.addObject("productList",search);
-		String filePath = "C:\\Users\\wsx98\\workspace\\DemoBean\\src\\main\\webapp\\images\\";
-		model.addObject("m", filePath);		
+		List<Product> search = dao.searchcomp(typ);
+		model.addObject("productList", search);
+		String filePath = "C:\\Users\\user\\Desktop\\DemoBeanBook\\src\\main\\webapp\\images\\";
+		model.addObject("m", filePath);
 		return model;
-		}
+	}
+
 	@RequestMapping(value = "/cat", method = RequestMethod.GET)
-	public ModelAndView cat(@ModelAttribute("searchcat") String typ){
-		ModelAndView model = new ModelAndView("product");		
+	public ModelAndView cat(@ModelAttribute("searchcat") String typ) {
+		ModelAndView model = new ModelAndView("product");
 		ProductDAODB dao = (ProductDAODB) context.getBean("productDAO");
-		System.out.println("cat="+typ);
-		List<Product> search =dao.searchcat(typ);
-		model.addObject("productList",search);
-		String filePath = "C:\\Users\\wsx98\\workspace\\DemoBean\\src\\main\\webapp\\images\\";
-		model.addObject("m", filePath);		
+		System.out.println("cat=" + typ);
+		List<Product> search = dao.searchcat(typ);
+		model.addObject("productList", search);
+		String filePath = "C:\\Users\\user\\Desktop\\DemoBeanBook\\src\\main\\webapp\\images\\";
+		model.addObject("m", filePath);
 		return model;
-		}
-	
+	}
+
 	@RequestMapping(value = "/categorysearch", method = RequestMethod.GET)
 	public ModelAndView categorysearch() {
 		ModelAndView model = new ModelAndView("category");
 		return model;
 	}// getProductList
+
 	@RequestMapping(value = "publishsearch", method = RequestMethod.GET)
 	public ModelAndView publishsearch() {
 		ModelAndView model = new ModelAndView("publish");
 		return model;
 	}
+
 	@RequestMapping(value = "/createPO", method = RequestMethod.GET)
-	public ModelAndView createPO(@ModelAttribute("id") int id){
+	public ModelAndView createPO(@ModelAttribute("id") int id) {
 		ProductDAODB dao = (ProductDAODB) context.getBean("productDAO");
-		Product p= dao.get(id);
+		Product p = dao.get(id);
 		ModelAndView model = new ModelAndView("redirect:/productcon");
 		dao.op(p);
 		return model;
-		}
-	
-	
+	}
+
 }// ProductController

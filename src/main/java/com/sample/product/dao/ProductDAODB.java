@@ -1,7 +1,3 @@
-/**
- * sample program for web programming written by Ben Wu
- * reference: http://www.mkyong.com/spring/maven-spring-jdbc-example/
- */
 package com.sample.product.dao;
 
 import java.sql.Connection;
@@ -74,7 +70,7 @@ public class ProductDAODB implements ProductDAO {
 	public void insert(Product aProduct) {
 
 		// remove first parameter when Id is auto-increment
-		String sql = "INSERT INTO product (category, name , inventory, safeInventory,author,translator,price,company,product_id,rel_date) VALUES(?, ? ,?, ?, ?, ?, ?, ?, ?,Now())";
+		String sql = "INSERT INTO product (category, name , inventory, safeInventory,price,company,product_id,rel_date) VALUES(?, ? ,?, ?, ?, ?, ?, ?, ?,Now())";
 		try {
 			conn = dataSource.getConnection();
 			smt = conn.prepareStatement(sql);
@@ -82,9 +78,9 @@ public class ProductDAODB implements ProductDAO {
 			smt.setString(2, aProduct.getName());
 			smt.setInt(3, aProduct.getInventory());
 			smt.setInt(4, aProduct.getSafeInventory());
-			smt.setInt(7, aProduct.getPrice());
-			smt.setString(8, aProduct.getCompany());
-			smt.setLong(9, aProduct.getProduct_id());
+			smt.setInt(5, aProduct.getPrice());
+			smt.setString(6, aProduct.getCompany());
+			smt.setLong(7, aProduct.getProduct_id());
 		
 			
 			smt.executeUpdate();
@@ -153,9 +149,9 @@ public class ProductDAODB implements ProductDAO {
 			smt.setString(2, aProduct.getName());
 			smt.setInt(3, aProduct.getInventory());
 			smt.setInt(4, aProduct.getSafeInventory());
-			smt.setInt(7, aProduct.getPrice());
-			smt.setString(8, aProduct.getCompany());
-			smt.setLong(9, aProduct.getProduct_id());
+			smt.setInt(5, aProduct.getPrice());
+			smt.setString(6, aProduct.getCompany());
+			smt.setLong(7, aProduct.getProduct_id());
 			smt.executeUpdate();
 			smt.close();
 
