@@ -21,7 +21,7 @@
         <p class="lead">本系統為輔仁大學資訊管理學系之範例程式</p>
       </div>
       
-      <a class="btn btn-primary" href="comp?searchcomp=領袖出版社">領袖出版社</a>
+      <a class="btn btn-primary" href="comp?searchcomp="></a>
       <a class="btn btn-primary" href="comp?searchcomp=寫樂文化有限公司">寫樂文化有限公司</a>
       <a class="btn btn-primary" href="comp?searchcomp=國立臺灣大學出版中心">國立臺灣大學出版中心</a>
 <!-- /.container -->

@@ -1,5 +1,5 @@
 /**
- * sample program for web programming written by Ben Wu
+ 
  * reference: http://www.mkyong.com/spring/maven-spring-jdbc-example/
  */
 package com.sample.product.dao;

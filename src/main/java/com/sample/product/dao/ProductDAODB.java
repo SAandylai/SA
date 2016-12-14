@@ -43,16 +43,12 @@ public class ProductDAODB implements ProductDAO {
 				Product aProduct = new Product();
 				aProduct.setProduct_id(rs.getInt("product_id"));
 				aProduct.setName(rs.getString("name"));
-				aProduct.setTranslator(rs.getString("translator"));
 				aProduct.setCategory(rs.getString("category"));
-				aProduct.setPath(rs.getString("path"));
-				aProduct.setAuthor(rs.getString("author"));
+				aProduct.setPath(rs.getString("path"));				
 				aProduct.setCompany(rs.getString("company"));
 				aProduct.setRel_date(rs.getDate("rel_date"));
 
 				aProduct.setPrice(rs.getInt("price"));
-				aProduct.setDiscount_price(rs.getInt("discount_price"));
-				aProduct.setDiscount_date(rs.getDate("discount_date"));
 				aProduct.setInventory(rs.getInt("inventory"));
 				aProduct.setSafeInventory(rs.getInt("safeInventory"));
 			
@@ -86,8 +82,6 @@ public class ProductDAODB implements ProductDAO {
 			smt.setString(2, aProduct.getName());
 			smt.setInt(3, aProduct.getInventory());
 			smt.setInt(4, aProduct.getSafeInventory());
-			smt.setString(5, aProduct.getAuthor());
-			smt.setString(6, aProduct.getTranslator());
 			smt.setInt(7, aProduct.getPrice());
 			smt.setString(8, aProduct.getCompany());
 			smt.setLong(9, aProduct.getProduct_id());
@@ -121,16 +115,12 @@ public class ProductDAODB implements ProductDAO {
 			if (rs.next()) {
 				aProduct.setProduct_id(rs.getInt("product_id"));
 				aProduct.setName(rs.getString("name"));
-				aProduct.setTranslator(rs.getString("translator"));
 				aProduct.setCategory(rs.getString("category"));
 				aProduct.setPath(rs.getString("path"));
-				aProduct.setAuthor(rs.getString("author"));
 				aProduct.setCompany(rs.getString("company"));
 				aProduct.setRel_date(rs.getDate("rel_date"));
 
 				aProduct.setPrice(rs.getInt("price"));
-				aProduct.setDiscount_price(rs.getInt("discount_price"));
-				aProduct.setDiscount_date(rs.getDate("discount_date"));
 				aProduct.setInventory(rs.getInt("inventory"));
 				aProduct.setSafeInventory(rs.getInt("SafeInventory"));
 			}
@@ -154,7 +144,7 @@ public class ProductDAODB implements ProductDAO {
 	public void update(Product aProduct) {
 
 
-		String sql = "UPDATE product SET category=?, name=? , inventory=? , safeInventory=?, author=?, translator=?,price=?, company=? "
+		String sql = "UPDATE product SET category=?, name=? , inventory=? , safeInventory=?,price=?, company=? "
 				+ "WHERE product_id = ?";
 		try {
 			conn = dataSource.getConnection();
@@ -163,8 +153,6 @@ public class ProductDAODB implements ProductDAO {
 			smt.setString(2, aProduct.getName());
 			smt.setInt(3, aProduct.getInventory());
 			smt.setInt(4, aProduct.getSafeInventory());
-			smt.setString(5, aProduct.getAuthor());
-			smt.setString(6, aProduct.getTranslator());
 			smt.setInt(7, aProduct.getPrice());
 			smt.setString(8, aProduct.getCompany());
 			smt.setLong(9, aProduct.getProduct_id());
@@ -224,16 +212,12 @@ public class ProductDAODB implements ProductDAO {
 				// Product aProduct=new Product();
 				aProduct.setProduct_id(rs.getInt("product_id"));
 				aProduct.setName(rs.getString("name"));
-				aProduct.setTranslator(rs.getString("translator"));
 				aProduct.setCategory(rs.getString("category"));
 				aProduct.setPath(rs.getString("path"));
-				aProduct.setAuthor(rs.getString("author"));
 				aProduct.setCompany(rs.getString("company"));
 				aProduct.setRel_date(rs.getDate("rel_date"));
 
 				aProduct.setPrice(rs.getInt("price"));
-				aProduct.setDiscount_price(rs.getInt("discount_price"));
-				aProduct.setDiscount_date(rs.getDate("discount_date"));
 				aProduct.setInventory(rs.getInt("inventory"));
 				aProduct.setSafeInventory(rs.getInt("SafeInventory"));
 			}
@@ -277,16 +261,12 @@ public class ProductDAODB implements ProductDAO {
 				Product aProduct = new Product();
 				aProduct.setProduct_id(rs.getInt("product_id"));
 				aProduct.setName(rs.getString("name"));
-				aProduct.setTranslator(rs.getString("translator"));
 				aProduct.setCategory(rs.getString("category"));
 				aProduct.setPath(rs.getString("path"));
-				aProduct.setAuthor(rs.getString("author"));
 				aProduct.setCompany(rs.getString("company"));
 				aProduct.setRel_date(rs.getDate("rel_date"));
 
 				aProduct.setPrice(rs.getInt("price"));
-				aProduct.setDiscount_price(rs.getInt("discount_price"));
-				aProduct.setDiscount_date(rs.getDate("discount_date"));
 				aProduct.setInventory(rs.getInt("inventory"));
 				aProduct.setSafeInventory(rs.getInt("SafeInventory"));
 				productList.add(aProduct);
@@ -323,16 +303,12 @@ public class ProductDAODB implements ProductDAO {
 				Product aProduct = new Product();
 				aProduct.setProduct_id(rs.getInt("product_id"));
 				aProduct.setName(rs.getString("name"));
-				aProduct.setTranslator(rs.getString("translator"));
 				aProduct.setCategory(rs.getString("category"));
 				aProduct.setPath(rs.getString("path"));
-				aProduct.setAuthor(rs.getString("author"));
 				aProduct.setCompany(rs.getString("company"));
 				aProduct.setRel_date(rs.getDate("rel_date"));
 
 				aProduct.setPrice(rs.getInt("price"));
-				aProduct.setDiscount_price(rs.getInt("discount_price"));
-				aProduct.setDiscount_date(rs.getDate("discount_date"));
 				aProduct.setInventory(rs.getInt("inventory"));
 				aProduct.setSafeInventory(rs.getInt("SafeInventory"));
 				productList.add(aProduct);
@@ -369,16 +345,12 @@ public class ProductDAODB implements ProductDAO {
 				Product aProduct = new Product();
 				aProduct.setProduct_id(rs.getInt("product_id"));
 				aProduct.setName(rs.getString("name"));
-				aProduct.setTranslator(rs.getString("translator"));
 				aProduct.setCategory(rs.getString("category"));
 				aProduct.setPath(rs.getString("path"));
-				aProduct.setAuthor(rs.getString("author"));
 				aProduct.setCompany(rs.getString("company"));
 				aProduct.setRel_date(rs.getDate("rel_date"));
 
 				aProduct.setPrice(rs.getInt("price"));
-				aProduct.setDiscount_price(rs.getInt("discount_price"));
-				aProduct.setDiscount_date(rs.getDate("discount_date"));
 				aProduct.setInventory(rs.getInt("inventory"));
 				aProduct.setSafeInventory(rs.getInt("SafeInventory"));
 				productList.add(aProduct);
@@ -415,16 +387,12 @@ public class ProductDAODB implements ProductDAO {
 				Product aProduct = new Product();
 				aProduct.setProduct_id(rs.getInt("product_id"));
 				aProduct.setName(rs.getString("name"));
-				aProduct.setTranslator(rs.getString("translator"));
 				aProduct.setCategory(rs.getString("category"));
 				aProduct.setPath(rs.getString("path"));
-				aProduct.setAuthor(rs.getString("author"));
 				aProduct.setCompany(rs.getString("company"));
 				aProduct.setRel_date(rs.getDate("rel_date"));
 
 				aProduct.setPrice(rs.getInt("price"));
-				aProduct.setDiscount_price(rs.getInt("discount_price"));
-				aProduct.setDiscount_date(rs.getDate("discount_date"));
 				aProduct.setInventory(rs.getInt("inventory"));
 				aProduct.setSafeInventory(rs.getInt("SafeInventory"));
 				productList.add(aProduct);

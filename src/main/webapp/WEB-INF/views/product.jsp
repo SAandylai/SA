@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ ..<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -25,7 +25,7 @@
 	rel="stylesheet" />
 
 
-<title>Bookstore</title>
+<title>Inventory</title>
 
 <!-- Bootstrap Core CSS -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -54,29 +54,31 @@
 
 		<!-- Page Header -->
 		<div class="row">
-			<div class="col-lg-12">
+			<div class="col-lg-2">
 				<h1 class="page-header">
-					<strong>Bookstore </strong>
+					<strong>我不是書店//product </strong>
 				</h1>
 			</div>
+	
 		</div>
 		<!-- /.row -->
 
 		<!-- Projects Row -->
 		<div class="row">
-			<c:forEach items="${productList}" var="product" >
-			<div class="col-md-4 portfolio-item" style="top: 300px;">
-				<a href="#"> <img class="img-responsive"
-					src="${m}${product.product_id}.jpg" style="width:450px;height:450px" alt="">
-				</a>
-				<h3>
-					<a href="inf?id=${product.product_id}">${product.name}</a>
-				</h3>
-				<p>編號${product.product_id}</p>
-				<a class="btn btn-default" href="add?id=${product.product_id}">加入</a>
-			</div>
-				</c:forEach> 
-			
+			<c:forEach items="${productList}" var="product">
+				<div class="col-md-4 portfolio-item" style="top: 300px;">
+					<a href="#"> <img class="img-responsive"
+						src="${m}${product.product_id}.jpg"
+						style="width: 450px; height: 450px" alt="">
+					</a>
+					<h3>
+						<a href="inf?id=${product.product_id}">${product.name}</a>
+					</h3>
+					<p>編號${product.product_id}</p>
+					<a class="btn btn-default" href="add?id=${product.product_id}">當然是加入啊</a>
+				</div>
+			</c:forEach>
+
 		</div>
 
 		<!-- /.row -->
